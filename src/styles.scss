@@ -1,8 +1,44 @@
-@import 'themes';
 
-@import '~@nebular/theme/styles/globals';
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+@import '~@covalent/core/theming/all-theme';
 
-@include nb-install() {
-  @include nb-theme-global();
-};
-/* You can add global styles to this file, and also import other style files */
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+$typography: mat-typography-config(
+  $font-family: 'Titillium Web, Roboto, monospace',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $title: mat-typography-level(24px, 32px, 600)
+);
+@include mat-core($typography);
+
+@include covalent-core();
+
+@include covalent-utilities();
+
+@include covalent-layout();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$UserPatchDocs-primary: mat-palette($mat-indigo);
+$UserPatchDocs-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$UserPatchDocs-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$UserPatchDocs-theme: mat-light-theme($UserPatchDocs-primary, $UserPatchDocs-accent, $UserPatchDocs-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($UserPatchDocs-theme);
+@include covalent-theme($UserPatchDocs-theme, $typography); // $typography is an **optional** argument for the covalent-theme
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Source Sans Pro, Roboto, "Helvetica Neue", sans-serif; }

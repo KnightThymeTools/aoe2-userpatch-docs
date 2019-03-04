@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PageLink } from 'src/core/data/navigation';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  activePages: PageLink[] = [
+      {
+        title: "Home",
+        pageRoute: "/readme"
+      }
+  ]; 
   title = 'UserPatchDocs';
 }

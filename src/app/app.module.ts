@@ -4,18 +4,19 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
+import { CovalentLayoutModule } from '@covalent/core/layout';
+import { MaterialLoaderModule } from 'src/material-loader/material-loader.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    CovalentLayoutModule,
     BrowserModule,
+    MaterialLoaderModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    NbThemeModule.forRoot({ name: 'default' }),
-    NbLayoutModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
